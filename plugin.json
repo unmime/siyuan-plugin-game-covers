@@ -1,0 +1,46 @@
+{
+  "name": "siyuan-plugin-game-covers",
+  "author": "unmime",
+  "url": "https://github.com/unmime/siyuan-plugin-game-covers",
+  "version": "0.1.1",
+  "minAppVersion": "3.5.0",
+  "backends": [
+    "all"
+  ],
+  "frontends": [
+    "desktop",
+    "desktop-window",
+    "browser-desktop",
+    "mobile",
+    "browser-mobile"
+  ],
+  "disabledInPublish": true,
+  "displayName": {
+    "default": "Steam Games Cover Get",
+    "zh_CN": "Steam Games Cover Get",
+    "zh-CN": "Steam Games Cover Get"
+  },
+  "description": {
+    "default": "Search game cover art from SteamGridDB and use it in your notes or as the document icon. Requires a free SteamGridDB API Key — see README for how to get one.",
+    "zh_CN": "从 SteamGridDB 搜索游戏封面，插进正文或设为文档图标。需要自备免费的 API Key，申请方法见 README。",
+    "zh-CN": "从 SteamGridDB 搜索游戏封面，插进正文或设为文档图标。需要自备免费的 API Key，申请方法见 README。"
+  },
+  "readme": {
+    "default": "README.md",
+    "zh_CN": "README_zh_CN.md",
+    "zh-CN": "README_zh_CN.md"
+  },
+  "icon": "icon.png",
+  "preview": "preview.png",
+  "keywords": [
+    "游戏",
+    "game",
+    "cover",
+    "grid",
+    "steam",
+    "封面",
+    "海报",
+    "游戏图标",
+    "steamgriddb"
+  ]
+}

@@ -1,0 +1,338 @@
+/* Game Covers —— 选择器样式
+ *
+ * 视觉语言与 siyuan-plugin-LLM-icons / siyuan-plugin-dashboard-icons 保持一致。
+ * 前缀必须用 gcv-：lmi-（LLM-icons）、dicon-（dashboard）、asi-（appstore）、
+ * itc-（iTunes-covers）可能同时加载，共用类名会互相污染。
+ */
+
+.gcv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    min-height: 0;
+    flex: 1;
+    min-width: 0;
+}
+
+/* ── 搜索行 ──────────────────────────────────── */
+
+.gcv-bar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.gcv-bar input {
+    flex: 1;
+    height: 32px;
+    box-sizing: border-box;
+}
+
+/* ── 尺寸 chips ──────────────────────────────── */
+
+.gcv-chips {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    flex-wrap: nowrap;
+    scrollbar-width: thin;
+}
+
+.gcv-chips::-webkit-scrollbar {
+    height: 4px;
+}
+
+.gcv-chip {
+    flex: 0 0 auto;
+    border: 1px solid var(--b3-border-color);
+    background: var(--b3-theme-surface);
+    color: var(--b3-theme-on-surface);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.12s, border-color 0.12s;
+    white-space: nowrap;
+}
+
+.gcv-chip:hover {
+    border-color: var(--b3-theme-primary);
+}
+
+.gcv-chip.on {
+    background: var(--b3-theme-primary);
+    border-color: var(--b3-theme-primary);
+    color: var(--b3-theme-on-primary);
+}
+
+/* ── 计数 + 提示行 ───────────────────────────── */
+
+.gcv-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 11.5px;
+    color: var(--b3-theme-on-surface-light);
+    min-height: 16px;
+}
+
+/* ── 滚动区 ──────────────────────────────────── */
+
+.gcv-scroll {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    padding: 2px 2px 8px;
+}
+
+.gcv-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.gcv-scroll::-webkit-scrollbar-thumb {
+    background: var(--b3-scroll-color, rgba(128, 128, 128, 0.3));
+    border-radius: 3px;
+}
+
+/* ── 提示区（无 key / 空结果 / 出错）──────────── */
+
+.gcv-notice {
+    text-align: center;
+    padding: 72px 16px;
+    font-size: 13px;
+    color: var(--b3-theme-on-surface-light);
+}
+
+.gcv-notice-main {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.gcv-notice-sub {
+    font-size: 12px;
+    margin-bottom: 14px;
+}
+
+.gcv-notice a {
+    color: var(--b3-theme-primary);
+    word-break: break-all;
+}
+
+.gcv-notice-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ── 网格 ────────────────────────────────────── */
+
+.gcv-grid {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+}
+
+/* ── 卡片：只有封面图，游戏名走 tooltip ───────── */
+
+.gcv-card {
+    position: relative;
+    background: var(--b3-theme-surface);
+    border: 1px solid var(--b3-border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-color 0.12s, transform 0.12s;
+}
+
+.gcv-card:hover {
+    border-color: var(--b3-theme-primary);
+    transform: translateY(-1px);
+}
+
+.gcv-card:active {
+    transform: none;
+}
+
+.gcv-card.busy {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.gcv-art {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.gcv-art img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3; /* 实际比例由内联 style 按接口返回的 w/h 覆盖 */
+    object-fit: cover;
+    display: block;
+}
+
+/* 悬停操作区：只放"设为文档图标"一个按钮 */
+.gcv-acts {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: flex;
+    gap: 3px;
+    opacity: 0;
+    transition: opacity 0.12s;
+}
+
+.gcv-card:hover .gcv-acts {
+    opacity: 1;
+}
+
+.gcv-acts button {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--b3-border-color);
+    background: var(--b3-theme-background);
+    color: var(--b3-theme-on-surface);
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.gcv-acts button:hover {
+    border-color: var(--b3-theme-primary);
+    color: var(--b3-theme-primary);
+}
+
+.gcv-acts svg {
+    width: 11px;
+    height: 11px;
+}
+
+/* ── 设置页 ──────────────────────────────────── */
+
+.gcv-setting {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+/* ── 表情面板里的游戏封面 tab ─────────────────── */
+
+.gcv-emoji-tab {
+    flex: 0 0 auto;
+    margin: 0 2px;
+    color: var(--b3-theme-on-surface);
+    transition: color 0.12s;
+}
+
+.gcv-emoji-tab:hover,
+.gcv-emoji-tab.block__icon--active {
+    color: var(--b3-theme-primary);
+}
+
+/* game-two 是线性图标（stroke），颜色跟着 color 走，不要设 fill */
+.gcv-emoji-tab svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+/* 面板只有 368px 宽，网格要密一些 */
+.gcv-ep {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.gcv-ep-chips {
+    display: flex;
+    gap: 4px;
+    padding: 4px 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.gcv-ep-chip {
+    flex: 0 0 auto;
+    border: 1px solid var(--b3-border-color);
+    background: var(--b3-theme-surface);
+    color: var(--b3-theme-on-surface);
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.gcv-ep-chip.on {
+    background: var(--b3-theme-primary);
+    border-color: var(--b3-theme-primary);
+    color: var(--b3-theme-on-primary);
+}
+
+.gcv-ep-grid {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: 3px;
+    align-content: start;
+    padding: 2px 6px 8px;
+}
+
+.gcv-ep-item {
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.12s;
+    padding: 1px;
+}
+
+.gcv-ep-item:hover {
+    background: var(--b3-list-hover);
+}
+
+.gcv-ep-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.gcv-ep-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 32px 6px;
+    font-size: 12px;
+    color: var(--b3-theme-on-surface-light);
+    word-break: break-all;
+}
+
+.gcv-ep-empty a {
+    color: var(--b3-theme-primary);
+}
+
+.gcv-ep-empty button,
+.gcv-ep-empty a.b3-button {
+    display: inline-block;
+    margin: 8px 2px 0;
+    font-size: 12px;
+}
