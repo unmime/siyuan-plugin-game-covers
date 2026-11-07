@@ -591,7 +591,7 @@ module.exports = class GameCovers extends Plugin {
             showNotice(`<div class="gcv-notice-main">${this.esc(this.i18n.needKey)}</div>
     <div class="gcv-notice-sub"><a href="${KEY_URL}" target="_blank" rel="noopener">${this.esc(this.i18n.keyHelp)}</a></div>
     <div class="gcv-notice-actions">
-        <a class="b3-button gcv-go-apply" href="${KEY_URL}" target="_blank" rel="noopener">${this.esc(this.i18n.goApply)}</a>
+        <a class="b3-button b3-button--outline gcv-go-apply" href="${KEY_URL}" target="_blank" rel="noopener">${this.esc(this.i18n.goApply)}</a>
         <button class="b3-button b3-button--outline gcv-open-settings">${this.esc(this.i18n.goSettings)}</button>
     </div>`);
         };
