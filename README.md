@@ -7,8 +7,8 @@ insert it into your notes, or set it as the document icon.
 
 ## Set up your API key first
 
-SteamGridDB requires authentication on every endpoint — there is no anonymous access,
-so you need your own free key. Four steps:
+SteamGridDB has no anonymous access — every request needs a key, so grab your own free
+one. Four steps:
 
 1. Open https://www.steamgriddb.com/ and sign in with a Steam account or email
 2. Go to https://www.steamgriddb.com/profile/preferences/api
@@ -20,7 +20,7 @@ The key is stored only in your local workspace data. It is never sent anywhere e
 
 ## How to use
 
-Entries live in the top bar, breadcrumbs and the emoji panel. Hotkey: `⌥⌘G`.
+Open it from the top bar, the breadcrumb bar or the emoji panel. Shortcut: `⌥⌘G`.
 
 Open the panel, type a game name and press Enter. Once results show up:
 
@@ -30,8 +30,8 @@ Open the panel, type a game name and press Enter. Once results show up:
 
 ## About cover sizes
 
-The default is `600x900` portrait, best for covers and document icons. The chips at the
-top of the panel switch to hero (460×215) and square (512×512).
+The default is `600×900` portrait — good for covers and document icons. The buttons at
+the top of the panel switch to hero (460×215) and square (512×512).
 
 SteamGridDB is a community library: the same game often has dozens of covers in different
 styles, ranked by score — the top ones are usually the good ones.
